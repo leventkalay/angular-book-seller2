@@ -9,6 +9,7 @@ import {NotFoundComponent} from './error/not-found/not-found.component';
 import {UnauthorizedComponent} from './error/unauthorized/unauthorized.component';
 import {AuthGuard} from './guards/auth.guard';
 import {Role} from './models/role.enum';
+import {BookComponent} from './admin/book/book.component';
 
 
 const routes: Routes = [
@@ -30,7 +31,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {roles: [Role.ADMIN]}
   },
-
+  { path: 'book',
+    component: BookComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.ADMIN]}
+  },
   {path: '404', component: NotFoundComponent},
   {path: '401', component: UnauthorizedComponent},
 ];
